@@ -6,7 +6,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
   const newUserChannel = newMember.voiceChannel;
   const oldUserChannel = oldMember.voiceChannel;
 
-  if (oldUserChannel === undefined && newUserChannel !== undefined && newMember.user.username === 'jgibson02') {
+  if (oldUserChannel === undefined && newUserChannel !== undefined && newMember.user.username === process.env.DISCORD_USERNAME) {
     // User Joins a voice channel
     newUserChannel.join().then((connection) => {
       // Yay, it worked!
