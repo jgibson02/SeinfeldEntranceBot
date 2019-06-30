@@ -8,10 +8,14 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
 
   if (oldUserChannel === undefined && newUserChannel !== undefined && newMember.user.username === 'jgibson02') {
     // User Joins a voice channel
-    newUserChannel.send('Buenos dias muchachalatas');
+    newUserChannel.join().then((connection) => {
+      // Yay, it worked!
+      console.log('Successfully connected.');
+    }).catch((e) => {
+      // Oh no, it errored! Let's log it to console :)
+      console.error(e);
+    });
   }
 });
 
-bot.login(process.env.TOKEN);
-
-require('http').createServer().listen(3000);
+bot.login(process.env.SEINFELDENTRANCEBOT_TOKEN);
