@@ -11,6 +11,10 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
     newUserChannel.join().then((connection) => {
       // Yay, it worked!
       console.log('Successfully connected.');
+      const dispatcher = connection.playFile('./seinfeld.mp3');
+      dispatcher.on("end", end => {
+          newUserChannel.leave();
+      });
     }).catch((e) => {
       // Oh no, it errored! Let's log it to console :)
       console.error(e);
