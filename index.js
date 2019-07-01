@@ -12,6 +12,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
       // Yay, it worked!
       console.log('Successfully connected.');
       const dispatcher = connection.playFile('./seinfeld.mp3');
+      dispatcher.setVolume(0.8);
       dispatcher.on("end", end => {
           newUserChannel.leave();
       });
